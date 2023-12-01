@@ -1,4 +1,4 @@
-import Carousel from "./components/carousel.jsx";
+import Carousel from "./components/partials/Carousel";
 
 function App() {
   return (
