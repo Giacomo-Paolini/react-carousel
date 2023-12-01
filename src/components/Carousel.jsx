@@ -13,6 +13,10 @@ export default function Carousel() {
     setCurrentImage((currentImage - 1 + images.length) % images.length);
   }
 
+  (() => { 
+    setTimeout(handleNext, 3000);
+  })();
+
   return (
     <div className="flex items-center gap-6 max-w-[1200px]">
       <button onClick={handlePrev} className="p-4 bg-red-500 rounded-full">
