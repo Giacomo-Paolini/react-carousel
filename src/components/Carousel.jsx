@@ -4,6 +4,7 @@ import images from "../data/store";
 export default function Carousel() {
 
   const [currentImage, setCurrentImage] = useState(0);
+  const [pauseOnHover, setPauseOnHover] = useState(false);
 
   function handleNext() {
     setCurrentImage((currentImage + 1) % images.length);
@@ -13,12 +14,14 @@ export default function Carousel() {
     setCurrentImage((currentImage - 1 + images.length) % images.length);
   }
 
-  (() => { 
-    setTimeout(handleNext, 3000);
+  (() => {
+    if (!pauseOnHover) {
+      setTimeout( handleNext, 3000);
+    }
   })();
 
   return (
-    <div className="flex items-center gap-6 max-w-[1200px]">
+    <div className="flex items-center gap-6 max-w-[1200px]" onMouseEnter={() => setPauseOnHover(true)} onMouseLeave={() => setPauseOnHover(false)}>
       <button onClick={handlePrev} className="p-4 bg-red-500 rounded-full">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
